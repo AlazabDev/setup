@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العزب المعمارية | قسم التطوير</title>
+    <meta name="description" content="قسم التطوير والتقنية في شركة العزب المعمارية - نبتكر حلولًا رقمية متكاملة لدعم رؤيتك المعمارية">
+    <link rel="icon" href="https://al-azab.co/assets/img/favicon.ico" type="image/x-icon">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="العزب المعمارية | قسم التطوير">
+    <meta property="og:description" content="قسم التطوير والتقنية في شركة العزب المعمارية">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alazab.dev">
+    <meta property="og:image" content="https://al-azab.co/assets/img/about.jpg">
+  
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #e2b979;
+            --accent-color: #4299e1;
+            --dark-color: #2d3748;
+            --light-color: #f7fafc;
+            --text-color: #2d3748;
+            --text-light: #718096;
+            --success-color: #38a169;
+            --warning-color: #dd6b20;
+            --error-color: #e53e3e;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .logo-text span {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            right: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+            right: auto;
+            left: 0;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), 
+                        url('images/hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #f8f9fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .service-link:hover {
+            color: var(--primary-color);
+            gap: 1rem;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: linear-gradient(to top, rgba(26, 54, 93, 0.9), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-overlay p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-tag {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Team Section */
+        .team {
+            background-color: #f8f9fa;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .team-member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .team-member-info {
+            padding: 1.5rem;
+        }
+        
+        .team-member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .team-member-info p {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .team-member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-member-social a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .team-member-social a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-details p, .contact-details a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-details a:hover {
+            color: var(--accent-color);
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .footer-logo img {
+            width: 150px;
+            height: auto;
+        }
+        
+        .footer-logo p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            gap: 1rem;
+        }
+        
+        .footer-newsletter p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 5px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background-color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            z-index: 999;
+        }
+        
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://al-azab.co/assets/img/logo.png" alt="شعار العزب المعمارية">
+                <div class="logo-text">
+                    <h1>العزب المعمارية</h1>
+                    <span>قسم التطوير والتقنية</span>
+                </div>
+            </div>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#projects">أعمالنا</a></li>
+                    <li><a href="#team">فريقنا</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2 class="fade-in-up">نبتكر حلولًا رقمية متكاملة لرؤيتك المعمارية</h2>
+            <p class="fade-in-up delay-1">قسم التطوير في شركة العزب المعمارية يقدم أحدث الحلول التقنية لدعم مشاريعك المعمارية والهندسية</p>
+            <div class="cta-buttons fade-in-up delay-2">
+                <a href="#projects" class="btn btn-primary">أعمالنا</a>
+                <a href="#contact" class="btn btn-secondary">تواصل معنا</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2>من نحن</h2>
+            <p>فريق متخصص في تطوير الحلول البرمجية لدعم قطاع البناء والتشييد</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>رؤيتنا ورسالتنا</h3>
+                <p>نحن في قسم التطوير بشركة العزب المعمارية نؤمن بأن التقنية يمكنها أن تحدث ثورة في مجال البناء والتشييد. نعمل على تطوير حلول برمجية متكاملة تسهم في تبسيط العمليات، زيادة الكفاءة، وتحسين جودة المخرجات.</p>
+                <p>فريقنا يتكون من مطورين ومهندسين ذوي خبرة واسعة في مجال التقنية والبناء، مما يمكننا من فهم التحديات الفريدة التي تواجه هذا القطاع وتقديم حلول مخصصة تلبي احتياجات عملائنا.</p>
+                <a href="#services" class="btn btn-primary">استكشف خدماتنا</a>
+            </div>
+            
+            <div class="about-image">
+                <img src="images/about.jpg" alt="فريق العزب المعمارية">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="section-title">
+            <h2>خدماتنا</h2>
+            <p>نقدم مجموعة متكاملة من الخدمات التقنية لدعم مشاريعك</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تطوير نظم إدارة المشاريع</h3>
+                    <p>نظم مخصصة لإدارة كافة جوانب المشاريع المعمارية والهندسية من التخطيط حتى التسليم.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card fade-in-up delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تطبيقات الجوال</h3>
+                    <p>تطبيقات ذكية للموقع تمكن فرق العمل من إدارة المهام والتقارير في الوقت الفعلي.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card fade-in-up delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تحليل البيانات</h3>
+                    <p>حلول متقدمة لتحليل بيانات المشاريع وتقديم رؤى تساعد في اتخاذ القرارات.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card fade-in-up">
+                <div class="service-icon">
+                    <i class="fas fa-drafting-compass"></i>
+                </div>
+                <div class="service-content">
+                    <h3>تكامل BIM</h3>
+                    <p>حلول برمجية لدمج نمذجة معلومات البناء (BIM) في سير العمل اليومي.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card fade-in-up delay-1">
+                <div class="service-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <div class="service-content">
+                    <h3>حلول السحابة</h3>
+                    <p>بنية تحتية سحابية آمنة وقابلة للتوسع لاستضافة تطبيقاتك وبياناتك.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="service-card fade-in-up delay-2">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="service-content">
+                    <h3>الذكاء الاصطناعي</h3>
+                    <p>استخدام تقنيات الذكاء الاصطناعي لتحسين التصميمات وتوقع التحديات.</p>
+                    <a href="#" class="service-link">المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-title">
+            <h2>أعمالنا</h2>
+            <p>بعض المشاريع التي نفخر بها</p>
+        </div>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/project1.jpg" alt="مشروع 1" class="project-image">
+                <div class="project-overlay">
+                    <h3>نظام إدارة المشاريع</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Web</span>
+                        <span class="project-tag">BIM</span>
+                    </div>
+                    <p>نظام متكامل لإدارة مشاريع البناء الكبرى مع تكامل نمذجة معلومات البناء.</p>
+                    <a href="#" class="btn btn-secondary">عرض التفاصيل</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="images/project2.jpg" alt="مشروع 2" class="project-image">
+                <div class="project-overlay">
+                    <h3>تطبيق ميداني</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Mobile</span>
+                        <span class="project-tag">IoT</span>
+                    </div>
+                    <p>تطبيق ذكي للموقع يتكامل مع أجهزة الاستشعار لمراقبة سير العمل.</p>
+                    <a href="#" class="btn btn-secondary">عرض التفاصيل</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="images/project3.jpg" alt="مشروع 3" class="project-image">
+                <div class="project-overlay">
+                    <h3>لوحة تحليل البيانات</h3>
+                    <div class="project-tags">
+                        <span class="project-tag">Data</span>
+                        <span class="project-tag">AI</span>
+                    </div>
+                    <p>لوحة تحكم متقدمة لتحليل أداء المشاريع وتوقع التحديات.</p>
+                    <a href="#" class="btn btn-secondary">عرض التفاصيل</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="section-title">
+            <h2>فريقنا</h2>
+            <p>المخترعون والمطورون خلف الحلول التقنية</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member fade-in-up">
+                <img src="images/team1.jpg" alt="عضو الفريق 1" class="team-member-image">
+                <div class="team-member-info">
+                    <h3>أحمد العزب</h3>
+                    <p>رئيس قسم التطوير</p>
+                    <div class="team-member-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member fade-in-up delay-1">
+                <img src="images/team2.jpg" alt="عضو الفريق 2" class="team-member-image">
+                <div class="team-member-info">
+                    <h3>سارة محمد</h3>
+                    <p>مهندسة برمجيات</p>
+                    <div class="team-member-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member fade-in-up delay-2">
+                <img src="images/team3.jpg" alt="عضو الفريق 3" class="team-member-image">
+                <div class="team-member-info">
+                    <h3>خالد عبدالله</h3>
+                    <p>مطور ويب</p>
+                    <div class="team-member-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member fade-in-up">
+                <img src="images/team4.jpg" alt="عضو الفريق 4" class="team-member-image">
+                <div class="team-member-info">
+                    <h3>لمى علي</h3>
+                    <p>مصممة واجهات</p>
+                    <div class="team-member-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-title">
+            <h2>تواصل معنا</h2>
+            <p>نحن هنا للإجابة على استفساراتك وتلقي أفكارك</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>العنوان</h3>
+                        <p>الرياض، المملكة العربية السعودية</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>الهاتف</h3>
+                        <a href="tel:+966112345678">+966 11 234 5678</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>البريد الإلكتروني</h3>
+                        <a href="mailto:dev@alazab.dev">dev@alazab.dev</a>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>ساعات العمل</h3>
+                        <p>الأحد - الخميس: 8 صباحًا - 5 مساءً</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">الموضوع</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="images/logo-white.png" alt="شعار العزب المعمارية">
+                <p>قسم التطوير والتقنية في شركة العزب المعمارية، نقدم حلولًا رقمية مبتكرة لدعم قطاع البناء والتشييد.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-arrow-left"></i> الرئيسية</a></li>
+                    <li><a href="#about"><i class="fas fa-arrow-left"></i> من نحن</a></li>
+                    <li><a href="#services"><i class="fas fa-arrow-left"></i> خدماتنا</a></li>
+                    <li><a href="#projects"><i class="fas fa-arrow-left"></i> أعمالنا</a></li>
+                    <li><a href="#team"><i class="fas fa-arrow-left"></i> فريقنا</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>خدماتنا</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تطوير نظم إدارة المشاريع</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تطبيقات الجوال</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تحليل البيانات</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> تكامل BIM</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> حلول السحابة</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-newsletter">
+                <h3>النشرة البريدية</h3>
+                <p>اشترك في نشرتنا البريدية لتصلك آخر أخبارنا وتحديثاتنا.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="بريدك الإلكتروني" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">اشتراك</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 العزب المعمارية - قسم التطوير. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            mobileMenuBtn.innerHTML = navMenu.style.display === 'flex' ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
+            } else {
+                scrollToTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.style.padding = '0.5rem 0';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '1rem 0';
+                header.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to a server
+            alert('شكرًا لتواصلك معنا! سنعود إليك قريبًا.');
+            contactForm.reset();
+        });
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            alert(`شكرًا على اشتراكك! سيصلك آخر أخبارنا على ${emailInput.value}`);
+            emailInput.value = '';
+        });
+        
+        // Intersection Observer for animations
+        const animateElements = document.querySelectorAll('.fade-in-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animateElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
