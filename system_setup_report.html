@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Setup Report - 2025-08-03</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .timestamp {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-icon {
+            font-size: 1.2em;
+            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .card p {
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tool-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .status-success {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .status-error {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .commands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        
+        .command-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .command-block h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .command-block code {
+            background: #34495e;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: block;
+            margin: 5px 0;
+            color: #2ecc71;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1em;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+            animation: progressAnimation 2s ease-in-out;
+        }
+        
+        @keyframes progressAnimation {
+            from { width: 0%; }
+            to { width: var(--progress); }
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .floating-action:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 System Setup Report</h1>
+            <p class="subtitle">Ultimate Development Environment Installation</p>
+            <div class="timestamp">Generated on Sun Aug  3 15:46:31 UTC 2025</div>
+        </header>
+
+        <section class="section">
+            <h2><span class="section-icon">💻</span>System Information</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div>CPU Cores</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3.7Gi</div>
+                    <div>Total Memory</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5.9G</div>
+                    <div>Available Space</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">x86</div>
+                    <div>Architecture</div>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>🖥️ Operating System</h3>
+                    <p><strong>OS:</strong> Ubuntu 24.04.2 LTS</p>
+                    <p><strong>Kernel:</strong> 6.14.0-1010-aws</p>
+                    <p><strong>Architecture:</strong> x86_64</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ Performance</h3>
+                    <p><strong>Uptime:</strong> up 1 day, 16 hours, 46 minutes</p>
+                    <p><strong>Load Average:</strong> 3.60, 1.95, 0.95</p>
+                    <p><strong>CPU Cores:</strong> 2</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🔧</span>Programming Languages & Runtimes</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> Python 3.12.3</div>
+                <div class="tool-item"><span class='status-success'>✓</span> v18.20.8</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 10.8.2</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 1.22.22</div>
+                <div class="tool-item"><span class='status-success'>✓</span> PHP 8.3.6 (cli) (built: Jul 14 2025 18:30:55) (NTS)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> Composer version 2.8.10 2025-07-10 19:08:33</div>
+                <div class="tool-item"><span class='status-success'>✓</span> openjdk 21.0.8 2025-07-15</div>
+                <div class="tool-item"><span class='status-error'>✗</span> Not installed</div>
+                <div class="tool-item"><span class='status-success'>✓</span> rustc 1.88.0 (6b00bc388 2025-06-23)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux-gnu]</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🗄️</span>Databases</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> mysql  Ver 15.1 Distrib 10.11.13-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper</div>
+                <div class="tool-item"><span class='status-success'>✓</span> psql (PostgreSQL) 16.9 (Ubuntu 16.9-0ubuntu0.24.04.1)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 3.45.1 2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1 (64-bit)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> Redis server v=7.0.15 sha=00000000:0 malloc=jemalloc-5.3.0 bits=64 build=3ec7bf4ec5bfafb8</div>
+                <div class="tool-item"><span class='status-success'>✓</span> </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🌐</span>Web Servers & Proxies</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> </div>
+                <div class="tool-item"><span class='status-success'>✓</span> Server version: Apache/2.4.58 (Ubuntu)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 2.6.2</div>
+                <div class="tool-item"><span class='status-success'>✓</span> </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🐳</span>Containerization & Orchestration</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> Docker version 28.3.3, build 980b856</div>
+                <div class="tool-item"><span class='status-success'>✓</span> Docker Compose version v2.39.1</div>
+                <div class="tool-item"><span class='status-success'>✓</span> </div>
+                <div class="tool-item"><span class='status-success'>✓</span> v1.36.0</div>
+                <div class="tool-item"><span class='status-success'>✓</span> v3.18.4+gd80839c</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">☁️</span>Cloud & DevOps Tools</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> Terraform v1.12.2</div>
+                <div class="tool-item"><span class='status-success'>✓</span> ansible [core 2.16.3]</div>
+                <div class="tool-item"><span class='status-success'>✓</span> aws-cli/2.28.1 Python/3.13.4 Linux/6.14.0-1010-aws exe/x86_64.ubuntu.24</div>
+                <div class="tool-item"><span class='status-success'>✓</span> </div>
+                <div class="tool-item"><span class='status-success'>✓</span> azure-cli                         2.75.0</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🛠️</span>Development Tools</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> git version 2.43.0</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 'Visual Studio Code'</div>
+                <div class="tool-item"><span class='status-success'>✓</span> VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Apr 01 2025 20:12:31)</div>
+                <div class="tool-item"><span class='status-success'>✓</span> tmux 3.4</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 'Fuzzy Finder'</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">🔒</span>Security Tools</h2>
+            <div class="tool-list">
+                <div class="tool-item"><span class='status-success'>✓</span> 'UFW Firewall'</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 'Fail2Ban'</div>
+                <div class="tool-item"><span class='status-success'>✓</span> 'ClamAV Antivirus'</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2><span class="section-icon">📋</span>Useful Commands & Next Steps</h2>
+            <div class="commands-grid">
+                <div class="command-block">
+                    <h4>🔄 Next Steps</h4>
+                    <code>source ~/.bashrc</code>
+                    <code>git config --global user.name "Your Name"</code>
+                    <code>git config --global user.email "your.email@example.com"</code>
+                    <code>sudo reboot</code>
+                </div>
+                <div class="command-block">
+                    <h4>🐳 Docker Commands</h4>
+                    <code>dps # List containers</code>
+                    <code>dstop # Stop all containers</code>
+                    <code>dclean # Clean system</code>
+                </div>
+                <div class="command-block">
+                    <h4>📊 Monitoring</h4>
+                    <code>htop # Process monitor</code>
+                    <code>glances # System overview</code>
+                    <code>neofetch # System info</code>
+                    <code>logs # System logs</code>
+                </div>
+                <div class="command-block">
+                    <h4>🔧 Git Shortcuts</h4>
+                    <code>gs # git status</code>
+                    <code>ga # git add</code>
+                    <code>gc # git commit</code>
+                    <code>gp # git push</code>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <button class="floating-action" onclick="window.scrollTo(0,0)" title="Back to top">↑</button>
+
+    <footer class="footer">
+        <p>🎉 <strong>Congratulations!</strong> Your ultimate development environment is ready! 🚀</p>
+        <p>Generated by Ultimate Development Tools Installation Script v2.1</p>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.section').forEach((section) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
