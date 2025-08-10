@@ -18,7 +18,7 @@ NC='\033[0m' # No Color
 
 # Logging functions
 log() {
-    echo -e "${GREEN}[$(date +'%Y-%m-%d %H:%M:%S')] $1${NC}"
+    echo -e "${GREEN}[$(repaet_system)] $1${NC}"
 }
 
 error() {
@@ -183,24 +183,6 @@ install_programming_languages() {
         info "Yarn already installed ✓"
     fi
     
-    # PHP ecosystem
-    install_package "php" "PHP"
-    install_package "php-cli" "PHP CLI"
-    install_package "php-fpm" "PHP-FPM"
-    install_package "php-mysql" "PHP MySQL Extension"
-    install_package "php-pgsql" "PHP PostgreSQL Extension"
-    install_package "php-sqlite3" "PHP SQLite Extension"
-    install_package "php-redis" "PHP Redis Extension"
-    install_package "php-memcached" "PHP Memcached Extension"
-    install_package "php-curl" "PHP cURL Extension"
-    install_package "php-json" "PHP JSON Extension"
-    install_package "php-mbstring" "PHP Multibyte String Extension"
-    install_package "php-xml" "PHP XML Extension"
-    install_package "php-zip" "PHP ZIP Extension"
-    install_package "php-gd" "PHP GD Extension"
-    install_package "php-intl" "PHP Internationalization Extension"
-    install_package "php-bcmath" "PHP BC Math Extension"
-    
     # Install Composer
     if ! command_exists composer; then
         log "Installing Composer..."
@@ -269,16 +251,6 @@ install_databases() {
     install_package "redis-server" "Redis Server"
     install_package "redis-tools" "Redis Tools"
     
-    # MongoDB
-    if ! command_exists mongod; then
-        log "Installing MongoDB..."
-        wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
-        echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-        sudo apt update
-        sudo apt install -y mongodb-org
-    else
-        info "MongoDB already installed ✓"
-    fi
     
     # Elasticsearch
     if ! command_exists elasticsearch; then
